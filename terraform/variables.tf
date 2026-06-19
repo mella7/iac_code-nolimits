@@ -34,41 +34,26 @@ variable "sg-name" {
   default     = "Jumphost-sg"
 }
 
-
 variable "iam-role" {
   description = "IAM Role for the Jumphost Server"
   type        = string
   default     = "Jumphost-iam-role"
 }
 
-/*
-  How to get the latest Amazon Linux 2023 AMI:
-
-  aws ec2 describe-images \
-    --owners amazon \
-    --region us-east-1 \
-    --filters "Name=name,Values=al2023-ami-*-x86_64" "Name=state,Values=available" \
-    --query "Images | sort_by(@, &CreationDate)[-1].ImageId" \
-    --output text 
-
-  Copy the returned AMI ID and update variables.tf.
-*/
-
 variable "ami_id" {
-  description = "AMI ID for the EC2 instance"
+  description = "AMI ID for the EC2 instance (Ubuntu 22.04 eu-north-1)"
   type        = string
-  default     = "ami-088fd024fe7aa5070" // Replace with the latest AMI ID for your region
-
+  default     = "ami-088fd024fe7aa5070"
 }
 
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t2.large"
+  default     = "t3.large"
 }
 
 variable "key_name" {
-  description = "nolimits-key-pair"
+  description = "EC2 keypair name"
   type        = string
   default     = "nolimits-key-pair"
 }
@@ -78,4 +63,3 @@ variable "instance_name" {
   type        = string
   default     = "Jumphost-server"
 }
-#
