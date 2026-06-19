@@ -7,7 +7,7 @@ terraform {
   }
 
   backend "s3" {
-    bucket = "mella7-bucket-01"
+    bucket = "nolimits-bucket-01 "
     key    = "terraform/terraform.tfstate"
     region = "us-east-1"
   }
